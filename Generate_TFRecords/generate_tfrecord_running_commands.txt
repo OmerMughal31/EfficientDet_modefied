@@ -1,0 +1,12 @@
+	Convert into csv
+	
+	python tf_xml_csv_converter.py -i "D:\Study\Masters Data\Masters Thesis\HSU\EfficientDet-master\datasets\config_folder\dataset\testset_annotations" -o "D:\Study\Masters Data\Masters Thesis\HSU\EfficientDet-master\datasets\config_folder\dataset\testset_annotations"\test_labels.csv
+
+
+	Convert into .tfrecord
+
+	python generate_tfrecord_mdata.py --csv_input=datasets/config_folder/dataset/test_labels.csv --img_path=datasets/config_folder/dataset/moved_images --output_path=datasets/config_folder/dataset/test.record
+
+	Generating Inference Graph
+	
+	python export_inference_graph.py --input_type image_tensor --trained_checkpoint_prefix checkpoints/2020-06-21/csv_100_0.1140_0.7599.h5 --output_directory trained-inference-graphs/output_inference_graph_v1.pb
