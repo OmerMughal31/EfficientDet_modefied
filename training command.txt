@@ -1,0 +1,47 @@
+STEP 1 (Original):
+	python3 train.py --snapshot imagenet --phi {0, 1, 2, 3, 4, 5, 6} --gpu 0 --random-transform --compute-val-loss --freeze-backbone --batch-size 32 --steps 1000 pascal|coco datasets/VOC2012|datasets/coco
+
+STEP 1:
+	python train.py --snapshot imagenet --phi {0, 1, 2, 3, 4, 5, 6} --gpu 0 --random-transform --compute-val-loss --freeze-backbone --batch-size 2 --steps 100 pascal datasets/VOC2012
+
+	OR
+
+	python train.py --snapshot imagenet --phi 0 --gpu 0 --random-transform --compute-val-loss --freeze-backbone --batch-size 2 --steps 100 pascal datasets/VOC2012
+
+STEP 2 (Original):
+	python3 train.py --snapshot xxx.h5 --phi {0, 1, 2, 3, 4, 5, 6} --gpu 0 --random-transform --compute-val-loss --freeze-bn --batch-size 4 --steps 10000 pascal|coco datasets/VOC2012|datasets/coco
+
+STEP 2:
+	python3 train.py --snapshot xxx.h5 --phi {0, 1, 2, 3, 4, 5, 6} --gpu 0 --random-transform --compute-val-loss --freeze-bn --batch-size 1 --steps 100 pascal datasets/VOC2012
+	
+	OR
+	
+	python train.py --snapshot imagenet --phi 0 --gpu 0 --random-transform --batch-size 1 --steps 498 csv datasets/train.csv datasets/classes.csv
+	
+	
+	python train.py --snapshot imagenet --phi 0 --gpu 0 --random-transform --batch-size 1 --steps 498 --epochs 100 csv datasets/train.csv datasets/classes.csv
+	
+	OR
+	
+	python train.py --snapshot  imagenet --phi 0 --gpu 0 --random-transform --batch-size 1 --steps 500 --epochs 100 csv datasets/config_folder/dataset/train.csv datasets/config_folder/dataset/classes.csv
+
+	OR (With validation loss computation)
+	
+	(Command for drone achariya dataset)
+	
+	python train.py --snapshot imagenet --phi 0 --gpu 0 --random-transform --compute-val-loss --batch-size 1 --steps 250 --epochs 100 csv datasets/train.csv datasets/classes.csv --val-annotations-path datasets/val.csv
+	
+	(Command for my dataset)
+	
+	python train.py --phi 1 --gpu 0 --random-transform --compute-val-loss --batch-size 3 --steps 1000 --epochs 500 csv datasets/config_folder/dataset/train.csv datasets/config_folder/dataset/classes.csv --val-annotations-path datasets/config_folder/dataset/val.csv
+	
+	(Weighted BiFPNs Command for My Dataset)
+	
+	python train.py --phi 1 --gpu 0 --weighted-bifpn --random-transform --compute-val-loss --batch-size 3 --steps 1000 --epochs 100 csv datasets/config_folder/dataset/train.csv datasets/config_folder/dataset/classes.csv --val-annotations-path datasets/config_folder/dataset/val.csv
+
+	(Command for My Dataset)
+	python train.py --phi 1 --gpu 0 --random-transform --compute-val-loss --batch-size 3 --steps 1000 --epochs 500 csv datasets/config_folder/dataset/train.csv datasets/config_folder/dataset/classes.csv --val-annotations-path datasets/config_folder/dataset/val.csv
+	
+	(Command for My Dataset)
+	python train.py --phi 2 --gpu 0 --random-transform --compute-val-loss --batch-size 3 --steps 1000 --epochs 250 csv datasets/config_folder/dataset/train.csv datasets/config_folder/dataset/classes.csv --val-annotations-path datasets/config_folder/dataset/val.csv
+	
